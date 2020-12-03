@@ -8,14 +8,12 @@ def parse(s):
 [parse(s) for s in open(infile)]
 
 h = len(m)
+w = len(m[0])
 
 def travers(r, d):
-    t, x, y = 0, 0, 0
-    while y + d < h:
-        if m[y+ d][x + r] == '#':
-            t += 1
-        x = x + r
-        y = y + d
+    t = 0
+    for x, y in zip(range(r, w, r), range(d, h, d)):
+        t +=  (m[y][x] == '#')
     return t
     
 print("sol 1", travers(3,1))    
