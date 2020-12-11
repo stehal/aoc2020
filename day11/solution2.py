@@ -2,11 +2,8 @@ import copy
 import collections
 
 input = "input"
-def split(word): 
-    return [char for char in word]
 
-seats = [split(s.strip()) for s in open(input)]
-#print(seats)
+seats = [list(s.strip()) for s in open(input)]
 h = len(seats)
 w = len(seats[0])
 
@@ -100,9 +97,6 @@ def seat(seats):
                 newseats[i][j] = "L"
     return newseats
             
-count = 0            
-
-
 while 1 == 1:
     newseats = seat(seats)
     if newseats == seats:
@@ -113,5 +107,4 @@ while 1 == 1:
                     c+=1
         print(c)
         break
-    count += 1    
     seats = newseats

@@ -2,11 +2,9 @@ import copy
 import collections
 
 input = "input"
-def split(word): 
-    return [char for char in word]
 
-seats = [split(s.strip()) for s in open(input)]
-#print(seats)
+seats = [list(s.strip()) for s in open(input)]
+
 h = len(seats)
 w = len(seats[0])
 
