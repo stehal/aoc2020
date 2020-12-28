@@ -1,26 +1,20 @@
 from collections import defaultdict
-#part 1 length=2020
-#part 2
-length = 30000000
+def rounds(length, numbers):
+    pos = {n:p for p, n in enumerate(numbers[:-1])}
+    lastnumberspoken = numbers[-1]
+    lastnumberspokenpos = len(numbers) - 1
+    for i in range(len(numbers) + 1, length+1):
+        if lastnumberspoken in pos:
+            new_num = lastnumberspokenpos - pos[lastnumberspoken]
+        else:
+            new_num = 0
+        pos[lastnumberspoken] = lastnumberspokenpos
+        lastnumberspoken = new_num
+        lastnumberspokenpos +=1
+    return new_num
 numbers=[6,19,0,5,7,13,1]
-
-pos = defaultdict(list)
-
-for i, n in enumerate(numbers):
-    pos[n].append(i + 1)
-
-while True:
-    lastnumber = numbers[-1]
-    if len(pos[lastnumber]) > 1:
-        new_num = len(numbers) - pos[lastnumber][-2]
-    else:
-        new_num = 0
-    
-    numbers.append(new_num)
-    pos[new_num].append(len(numbers))
-    if len(numbers) == length:
-        print(numbers[- 1])
-        break
+print("part 1", rounds( 2020, numbers))
+print("part 2", rounds( 30000000, numbers))
 
     
 
